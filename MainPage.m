@@ -43,9 +43,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+/**
+ *  点击下一步
+ *
+ */
 - (IBAction)NextStep:(id)sender {
     [self AddAnimation];
+    //延时操作 到时候换成登录完成 结束动画
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self ShowNext];
     });
@@ -73,7 +77,9 @@
     self.view=nil;
     [self.Window makeKeyAndVisible];
 }
-
+/**
+ *  旋转动画
+ */
 -(void)AddAnimation{
     CABasicAnimation *shake=[CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     shake.fromValue=[NSNumber numberWithFloat:0];

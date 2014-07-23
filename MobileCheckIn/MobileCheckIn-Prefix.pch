@@ -14,5 +14,5 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "NSString+deviceString.h"
-
+    #import "Defines.h"
 #endif
