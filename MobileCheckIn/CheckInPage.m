@@ -101,22 +101,16 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-        static NSString *CellIdentifier=@"Cell";
-        BOOL nibsRegistered = NO;
-        if(!nibsRegistered){
-            UINib *nib=[UINib nibWithNibName:@"TableViewCell" bundle:nil];
-            [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
-            nibsRegistered=YES;
-        }
-        TableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
+    static NSString *CellIdentifier=@"Cell";
+    TableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if(cell==nil){
+        cell=(TableViewCell *)[[[NSBundle mainBundle]loadNibNamed:@"TableViewCell" owner:self options:nil]lastObject];
         cell.label.text=[self.Data objectAtIndex:[self Upsidedown:indexPath.row]];
         cell.label.textColor=[UIColor blueColor];
         cell.backgroundColor=[UIColor clearColor];
-    
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        return cell;
+    }
+    return cell;
     
 }
 

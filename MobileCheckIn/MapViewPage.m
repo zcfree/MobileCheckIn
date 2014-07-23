@@ -173,8 +173,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CellIdentifier];
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                  reuseIdentifier: CellIdentifier] ;
-    //NSLog(@"%d__%@",indexPath.row,[self.AnnotationNote objectAtIndex:indexPath.row]);
-//    cell.textLabel.text=[self.AnnotationNote objectAtIndex:indexPath.row];
     Config *config=[self.AnnotationNote objectAtIndex:indexPath.row];
     UILabel *la1=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, 260, 18)];
     la1.text=config.Name;

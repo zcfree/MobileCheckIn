@@ -82,20 +82,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *CellIdentifier=@"Cell";
-    BOOL nibsRegistered = NO;
-    if(!nibsRegistered){
-        UINib *nib=[UINib nibWithNibName:@"CenterPageCell" bundle:nil];
-        [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
-        nibsRegistered=YES;
-    }
+
     CenterPageCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    comments *coms=[self.DataArray objectAtIndex:indexPath.row];
-    cell.title.text=coms.title;
-    cell.imageView.image=[UIImage imageNamed:coms.ImageName];
-    cell.time.text=coms.time;
-    cell.detail.text=coms.detail;
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if(cell==nil){
+        cell=(CenterPageCell *)[[[NSBundle mainBundle]loadNibNamed:@"CenterPageCell" owner:self options:nil]lastObject];
+        comments *coms=[self.DataArray objectAtIndex:indexPath.row];
+        cell.title.text=coms.title;
+        cell.imageView.image=[UIImage imageNamed:coms.ImageName];
+        cell.time.text=coms.time;
+        cell.detail.text=coms.detail;
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
+ 
     return cell;
     
 }
