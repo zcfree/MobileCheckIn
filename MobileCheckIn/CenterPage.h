@@ -11,9 +11,7 @@
  */
 #import <UIKit/UIKit.h>
 #import "IIViewDeckController.h"
-@interface CenterPage : UIViewController
-@property (weak, nonatomic) IBOutlet UINavigationBar *CustomNav;
-@property (weak, nonatomic) IBOutlet UINavigationItem *NavItem;
+@interface CenterPage : BasePage
 @property (weak, nonatomic) IBOutlet UITableView *MainTable;
 @property(nonatomic,strong)NSMutableArray *DataArray;
 @end

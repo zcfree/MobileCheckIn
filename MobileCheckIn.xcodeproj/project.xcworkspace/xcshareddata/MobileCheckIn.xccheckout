@@ -5,41 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>8142355E-5ADE-452F-9FF5-FAECC10F9C53</string>
+	<string>44C1C0B2-866F-49FA-8953-BE226010F1CF</string>
 	<key>IDESourceControlProjectName</key>
 	<string>MobileCheckIn</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>7FEFA3D6-CAB2-4A17-8733-F15299A1F87E</key>
+		<key>B77AB8CB-6DAB-4FCD-8033-874B1D508582</key>
 		<string>https://github.com/zcfree/MobileCheckIn.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>trunk/MobileCheckIn.xcodeproj/project.xcworkspace</string>
+	<string>MobileCheckIn.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>7FEFA3D6-CAB2-4A17-8733-F15299A1F87E</key>
-		<string>../../..</string>
-	</dict>
-	<key>IDESourceControlProjectRepositoryRootDictionary</key>
-	<dict>
-		<key>7FEFA3D6-CAB2-4A17-8733-F15299A1F87E</key>
-		<string>https://github.com/zcfree/MobileCheckIn.git</string>
+		<key>B77AB8CB-6DAB-4FCD-8033-874B1D508582</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/zcfree/MobileCheckIn.git/trunk/MobileCheckIn.xcodeproj</string>
+	<string>https://github.com/zcfree/MobileCheckIn.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>7FEFA3D6-CAB2-4A17-8733-F15299A1F87E</string>
+	<string>B77AB8CB-6DAB-4FCD-8033-874B1D508582</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.subversion</string>
+			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>7FEFA3D6-CAB2-4A17-8733-F15299A1F87E</string>
+			<string>B77AB8CB-6DAB-4FCD-8033-874B1D508582</string>
 			<key>IDESourceControlWCCName</key>
-			<string>mobilCheck</string>
+			<string>MobileCheckIn</string>
 		</dict>
 	</array>
 </dict>

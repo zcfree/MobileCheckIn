@@ -34,7 +34,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"消息" image:[UIImage imageNamed:@"tab_bar_message_normal"] selectedImage:[UIImage imageNamed:@"tab_bar_message_highlight"]];
+
 
     }
     return self;
@@ -49,14 +49,7 @@
     comments *coms3=[[comments alloc]initWithImageName:@"college_img_organization" Andtitle:@"一呼百应" Anddetail:@"欢迎关注一呼百应" Andtime:@"07-17 16:24"];
     comments *coms4=[[comments alloc]initWithImageName:@"college_img_collection" Andtitle:@"欧软云团队" Anddetail:@"欢迎你使用欧软云。如果你..." Andtime:@"07-17 16:24"];
     self.DataArray=[[NSMutableArray alloc]initWithObjects:coms1,coms2,coms3,coms4, nil];
-    ILBarButtonItem *settingsBtn =
-    [ILBarButtonItem barItemWithImage:[UIImage imageNamed:@"navigationItem_menu"] selectedImage:[UIImage imageNamed:@"navigationItem_menu_hl"]
-                               target:self
-                               action:@selector(leftTapped:)];
-    self.NavItem.leftBarButtonItem=settingsBtn;
-    MoLabel *label=[MoLabel LabelWithTitle:@"消息"];
-    self.NavItem.titleView = label;
-    [self.CustomNav setBackgroundImage:[UIImage imageNamed:@"nav_bar_bg"] forBarMetrics:UIBarMetricsDefault];
+
     //将它的footview初始化成一个view就可以了
     self.MainTable.tableFooterView=[[UIView alloc]init];
     // Do any additional setup after loading the view from its nib.
@@ -97,8 +90,6 @@
     
 }
 
--(void)leftTapped:(id)sender{
-    [self.viewDeckController toggleLeftViewAnimated:YES];
-}
+
 
 @end
