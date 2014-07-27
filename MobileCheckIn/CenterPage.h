@@ -7,7 +7,6 @@
 //
 /**
  *  消息模块  功能有：
-
  */
 #import <UIKit/UIKit.h>
 #import "IIViewDeckController.h"

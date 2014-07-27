@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "IIViewDeckController.h"
 @interface BasePage : UIViewController
-@property (weak, nonatomic) IBOutlet UINavigationBar *CustomNav;
-@property (weak, nonatomic) IBOutlet UINavigationItem *NavItem;
 
+@property(nonatomic,strong)NSString *image;
 
+-(void)setImage:(NSString *)image AndTitle:(NSString *)title;
 @end

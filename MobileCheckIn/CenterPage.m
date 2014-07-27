@@ -34,11 +34,13 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-
-
+        [self setImage:@"tab_bar_message" AndTitle:@"消息"];
+        
     }
     return self;
 }
+
+
 
 - (void)viewDidLoad
 {

@@ -12,11 +12,10 @@
  */
 #import <UIKit/UIKit.h>
 #import "IIViewDeckController.h"
-@interface AppPage : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface AppPage : BasePage<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *CollectionView;
-@property (weak, nonatomic) IBOutlet UINavigationBar *CustomNav;
-@property (weak, nonatomic) IBOutlet UINavigationItem *NavItem;
+
 
 @property(nonatomic,strong)NSArray *AppArray;
 @end

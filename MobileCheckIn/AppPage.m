@@ -25,8 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"应用" image:[UIImage imageNamed:@"tab_bar_app_normal"] selectedImage:[UIImage imageNamed:@"tab_bar_app_hightlight"]];
-        
+        [self setImage:@"tab_bar_app" AndTitle:@"应用"];
     }
     return self;
 }
@@ -39,15 +38,7 @@
     self.AppArray=[NSArray arrayWithObjects:Model1,Model2, nil];
     [self.CollectionView registerClass:[CollectionCell class] forCellWithReuseIdentifier:@"CollectionCell"];
     self.CollectionView.backgroundColor=[UIColor whiteColor];
-    ILBarButtonItem *settingsBtn =
-    [ILBarButtonItem barItemWithImage:[UIImage imageNamed:@"navigationItem_menu"] selectedImage:[UIImage imageNamed:@"navigationItem_menu_hl"]
-                               target:self
-                               action:@selector(leftTapped:)];
-    self.NavItem.leftBarButtonItem=settingsBtn;
-    MoLabel *label=[MoLabel LabelWithTitle:@"应用"];
-    self.NavItem.titleView = label;
-    [self.CustomNav setBackgroundImage:[UIImage imageNamed:@"nav_bar_bg"] forBarMetrics:UIBarMetricsDefault];
-    // Do any additional setup after loading the view from its nib.
+        // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,9 +103,7 @@
     return YES;
 }
 
--(void)leftTapped:(id)sender{
-    [self.viewDeckController toggleLeftViewAnimated:YES];
-}
+
 
 
 @end

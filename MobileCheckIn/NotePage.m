@@ -7,8 +7,7 @@
 //
 
 #import "NotePage.h"
-#import "ILBarButtonItem.h"
-#import "MoLabel.h"
+
 @interface NotePage ()
 
 @end
@@ -20,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.tabBarItem=[[UITabBarItem alloc]initWithTitle:@"通讯录" image:[UIImage imageNamed:@"tab_bar_contact_normal"] selectedImage:[UIImage imageNamed:@"tab_bar_contact_highlight"]];
+        [self setImage:@"tab_bar_contact" AndTitle:@"通讯录"];
         
     }
     return self;
@@ -29,15 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    ILBarButtonItem *settingsBtn =
-    [ILBarButtonItem barItemWithImage:[UIImage imageNamed:@"navigationItem_menu"] selectedImage:[UIImage imageNamed:@"navigationItem_menu_hl"]
-                               target:self
-                               action:@selector(leftTapped:)];
-    self.NavItem.leftBarButtonItem=settingsBtn;
-    MoLabel *label=[MoLabel LabelWithTitle:@"通讯录"];
-    self.NavItem.titleView = label;
-    [self.CustomNav setBackgroundImage:[UIImage imageNamed:@"nav_bar_bg"] forBarMetrics:UIBarMetricsDefault];
-    // Do any additional setup after loading the view from its nib.
+        // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,8 +37,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)leftTapped:(id)sender{
-    [self.viewDeckController toggleLeftViewAnimated:YES];
-}
+
 
 @end
