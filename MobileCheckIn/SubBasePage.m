@@ -1,20 +1,20 @@
 //
-//  BasePage.m
+//  SubBasePage.m
 //  MobileCheckIn
 //
-//  Created by OPSOFT on 14-7-26.
+//  Created by OPSOFT on 14-7-31.
 //  Copyright (c) 2014年 OPSOFT. All rights reserved.
 //
 
-#import "BasePage.h"
+#import "SubBasePage.h"
 #import "ILBarButtonItem.h"
 #import "MoLabel.h"
 
-@interface BasePage ()
+@interface SubBasePage ()
 
 @end
 
-@implementation BasePage
+@implementation SubBasePage
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,14 +25,6 @@
     return self;
 }
 
--(void)setImage:(NSString *)image AndTitle:(NSString *)title {
-    self.title=title;
-    self.image=image;
-    NSString *imageNormal=[NSString stringWithFormat:@"%@_normal",self.image];
-    NSString *imageHighlight=[NSString stringWithFormat:@"%@_highlight",self.image];
-    self.tabBarItem=[[UITabBarItem alloc]initWithTitle:self.title image:[UIImage imageNamed:imageNormal] selectedImage:[UIImage imageNamed:imageHighlight]];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -41,7 +33,7 @@
     [CustomNav pushNavigationItem:NavItem animated:NO];
     [self.view addSubview:CustomNav];
     ILBarButtonItem *settingsBtn =
-    [ILBarButtonItem barItemWithImage:[UIImage imageNamed:@"navigationItem_menu"] selectedImage:[UIImage imageNamed:@"navigationItem_menu_hl"]
+    [ILBarButtonItem barItemWithImage:[UIImage imageNamed:@"navigationItem_back"] selectedImage:[UIImage imageNamed:@"navigationItem_back_hl"]
                                target:self
                                action:@selector(leftTapped:)];
     NavItem.leftBarButtonItem=settingsBtn;
@@ -58,7 +50,17 @@
 }
 
 -(void)leftTapped:(id)sender{
-    [self.viewDeckController toggleLeftViewAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

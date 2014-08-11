@@ -15,6 +15,7 @@
 #import "MapViewPage.h"
 #import "GameUtils.h"
 #import "SubViewPage.h"
+#import "UISubview.h"
 @interface CheckInPage ()<MJRefreshBaseViewDelegate>{
     MJRefreshHeaderView *_header;
     SubViewPage *SubVP;
@@ -29,22 +30,35 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
+        self.title=@"移动签到";
     }
     return self;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+    
+    if(self.IsShow){
+        UISubview *Subview=[[UISubview alloc]initWithFrame:CGRectMake(10, 100, 200, 200)];
+        [Subview setTitle:@"Select..."];
+        [Subview show];
+        [[GameUtils getCurrentUserInfo].CheckInPlace addObject:self.note];
+    }
+    
     self.Data=[GameUtils getCurrentUserInfo].CheckInPlace;
     [self.CheckInView reloadData];
- 
+    
 }
+
+#pragma Mark MapDelegate
+-(void)IsShowView:(BOOL)flag Note:(NSString *)note{
+    self.IsShow=flag;
+    self.note=note;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //适配
-    
     self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"signin_bg"]];
     
     UILabel *Month=[[UILabel alloc]initWithFrame:CGRectMake(35, 67, 30, 20)];
@@ -70,15 +84,7 @@
     self.CheckInView.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"signin_bg"]];
     self.CheckInView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.CheckIn setImage:[UIImage imageNamed:@"signin_button_hl"] forState:UIControlStateHighlighted];
-    
-    ILBarButtonItem *settingsBtn =
-    [ILBarButtonItem barItemWithImage:[UIImage imageNamed:@"navigationItem_back"] selectedImage:[UIImage imageNamed:@"navigationItem_back_hl"]
-                               target:self
-                               action:@selector(leftTapped:)];
-    self.NavItem.leftBarButtonItem=settingsBtn;
-    MoLabel *label=[MoLabel LabelWithTitle:@"移动签到"];
-    self.NavItem.titleView=label;
-    [self.CustomNav setBackgroundImage:[UIImage imageNamed:@"nav_bar_bg"] forBarMetrics:UIBarMetricsDefault];
+  
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -108,7 +114,7 @@
     if(cell==nil){
         cell=(TableViewCell *)[[[NSBundle mainBundle]loadNibNamed:@"TableViewCell" owner:self options:nil]lastObject];
         cell.label.text=[self.Data objectAtIndex:[self Upsidedown:indexPath.row]];
-        cell.label.textColor=[UIColor blueColor];
+        cell.label.font=[UIFont fontWithName:nil size:15];
         cell.backgroundColor=[UIColor clearColor];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
@@ -152,13 +158,17 @@
 - (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
 {
     //刷新数据源
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.CheckInView reloadData];
+    });
     
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self.CheckInView selector:@selector(reloadData) userInfo:nil repeats:NO];
 }
 
 - (IBAction)CheckInClick:(id)sender {
     
     MapViewPage *mapViewPage=[[MapViewPage alloc]initWithNibName:@"MapViewPage" bundle:nil];
+    mapViewPage.delegate=self;
+    
     [self.navigationController pushViewController:mapViewPage animated:YES];
 }
 
@@ -173,9 +183,7 @@
 }
 
 
--(void)leftTapped:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 
 
 @end

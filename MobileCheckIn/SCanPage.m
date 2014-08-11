@@ -20,6 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title=@"二维码扫描";
     }
     return self;
 }
@@ -27,79 +28,44 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.readerView=[[ZBarReaderView alloc]init];
+    self.readerView.frame=CGRectMake(20, 60, 280, 280);
+    self.readerView.readerDelegate=self;
+    self.readerView.torchMode=0;
+    self.readerView.layer.cornerRadius=10;
+    if(TARGET_IPHONE_SIMULATOR){
+        ZBarCameraSimulator *cameraSimulator=[[ZBarCameraSimulator alloc]initWithViewController:self];
+        cameraSimulator.readerView=self.readerView;
+    }
+    [self.view addSubview:self.readerView];
+    //设置扫描区域
+//    CGRect scanMaskRect=CGRectMake(60, 200, 200, 200);
+//    self.readerView.scanCrop=[self getScanCorp:scanMaskRect readerViewBounds:self.readerView.bounds];
     
-    ILBarButtonItem *settingsBtn =
-    [ILBarButtonItem barItemWithImage:[UIImage imageNamed:@"navigationItem_back"] selectedImage:[UIImage imageNamed:@"navigationItem_back_hl"]
-                               target:self
-                               action:@selector(leftTapped:)];
-    self.NavItem.leftBarButtonItem=settingsBtn;
-    MoLabel *label=[MoLabel LabelWithTitle:@"二维码扫描"];
-    self.NavItem.titleView=label;
-    [self.CustomNav setBackgroundImage:[UIImage imageNamed:@"nav_bar_bg"] forBarMetrics:UIBarMetricsDefault];
-    
-    ZBarReaderViewController *reader=[ZBarReaderViewController new];
-    reader.readerDelegate=self;
-    reader.showsZBarControls=NO;
-    
-    [self setOverlayPickerView:reader];
-    
-    reader.supportedOrientationsMask=ZBarOrientationMaskAll;
-    
-    ZBarImageScanner *scanner=reader.scanner;
-    [scanner setSymbology:ZBAR_I25 config:ZBAR_CFG_ENABLE to:0];
-    [self presentViewController:reader animated:YES completion:nil];
+    [self.readerView start];
     // Do any additional setup after loading the view from its nib.
 }
 
+-(CGRect)getScanCorp:(CGRect)rect readerViewBounds:(CGRect)readerViewBounds{
+    CGFloat x,y,width,height;
+    
+    x=rect.origin.x/readerViewBounds.size.width;
+    y=rect.origin.y/readerViewBounds.size.height;
+    width=rect.size.width/readerViewBounds.size.width;
+    height=rect.size.height/readerViewBounds.size.height;
+    
+    return CGRectMake(x, y, width, height);
+}
 
-//填充界面
--(void)setOverlayPickerView:(ZBarReaderViewController *)reader{
-    for(UIView *temp in [reader.view subviews])
-    {
-        for(UIButton *btn in [temp subviews]){
-            if([btn isKindOfClass:[UIButton class]]){
-                [btn removeFromSuperview];
-            }
-        }
-        for(UIToolbar *toolbar in [temp subviews]){
-            if([toolbar isKindOfClass:[UIToolbar class]]){
-                [toolbar setHidden:YES];
-                [toolbar removeFromSuperview];
-            }
-        }
+-(void)readerView:(ZBarReaderView *)readerView didReadSymbols:(ZBarSymbolSet *)symbols fromImage:(UIImage *)image{
+    for (ZBarSymbol *symbol in symbols) {
+        NSLog(@"%@",symbol.data);
+        self.TextView.text=symbol.data;
+        break;
     }
     
-    //添加控件
-    
-    
-}
-
-
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    id<NSFastEnumeration> results=
-    [info objectForKey:ZBarReaderControllerResults];
-    ZBarSymbol *symbol=nil;
-    for(symbol in results)
-        break;
-    
-    NSLog(@"%@",symbol.data);
-    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 100, 320, 300)];
-    label.textColor=[UIColor blackColor];
-    label.textAlignment=NSTextAlignmentCenter;
-    label.lineBreakMode=NSLineBreakByWordWrapping;
-    label.numberOfLines=0;
-    label.text=symbol.data;
-    [self.view addSubview:label];
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
-
--(void)leftTapped:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
--(void)cancelAction:(id)sender{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.readerView stop];
 }
 
 - (void)didReceiveMemoryWarning

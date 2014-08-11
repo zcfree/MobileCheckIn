@@ -16,6 +16,5 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *CollectionView;
 
-
 @property(nonatomic,strong)NSArray *AppArray;
 @end

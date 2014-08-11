@@ -27,9 +27,11 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"signin_bg"]];
-    Model *Model1=[[Model alloc]initImageName:@"message_img_lxr_duihua" AndTitleName:@"发微博"];
+    Model *Model1=[[Model alloc]initImageName:@"message_img_lxr_department" AndTitleName:@"发微博"];
     Model *Model2=[[Model alloc]initImageName:@"message_img_lxr_collect" AndTitleName:@"拍照"];
-    NSArray *ModelArray=[NSArray arrayWithObjects:Model1,Model2, nil];
+    //添加详情页
+    Model *Model3=[[Model alloc]initImageName:@"message_img_lxr_duihua" AndTitleName:@"详情"];
+    NSArray *ModelArray=[NSArray arrayWithObjects:Model1,Model2,Model3, nil];
     int total=ModelArray.count;int COLUMN=4;int ROWHEIHT=50;
     for (int i=0; i<total; i++) {
         Model *CurModel=[ModelArray objectAtIndex:i];
@@ -39,7 +41,7 @@
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(70+60*column, ROWHEIHT*row, 80, ROWHEIHT)];
         view.backgroundColor = [UIColor clearColor];
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(15, 15, 30, 30);
+        btn.frame = CGRectMake(15, 8, 30, 30);
         btn.tag = i;
         [btn addTarget:self.CheckIn
                 action:@selector(subCateBtnAction:)
@@ -50,7 +52,7 @@
         
         [view addSubview:btn];
         
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, 60, 14)];
+        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 42, 60, 14)];
         lbl.textAlignment = NSTextAlignmentCenter;
         lbl.textColor = [UIColor whiteColor];
         lbl.font = [UIFont systemFontOfSize:12.0f];
@@ -62,7 +64,7 @@
     }
     
     CGRect viewFrame = self.view.frame;
-    viewFrame.size.height = ROWHEIHT  + 19;
+    viewFrame.size.height = ROWHEIHT+10;
     self.view.frame = viewFrame;
     // Do any additional setup after loading the view from its nib.
 }

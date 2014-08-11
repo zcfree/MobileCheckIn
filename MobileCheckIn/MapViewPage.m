@@ -32,6 +32,7 @@
 
 @implementation MapViewPage
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -97,7 +98,14 @@
     {
         for (AMapPOI *poi in response.pois)
         {
-            Config *config=[[Config alloc]initConfigWithName:poi.name AndAddress:poi.address];
+            NSString *Location=@"";
+            if([poi.district isEqualToString:poi.address]){
+                Location=[NSString stringWithFormat:@"%@%@%@",poi.province,poi.city,poi.district];
+            }else{
+                Location=[NSString stringWithFormat:@"%@%@%@%@",poi.province,poi.city,poi.district,poi.address];
+            }
+            
+            Config *config=[[Config alloc]initConfigWithName:poi.name AndAddress:Location];
             [self.AnnotationNote addObject:config];
         }
         [self.Table reloadData];
@@ -152,6 +160,7 @@
     MoLabel *label=[MoLabel LabelWithTitle:@"地图定位"];
     self.NavItem.titleView=label;
     [self.CustomNav setBackgroundImage:[UIImage imageNamed:@"nav_bar_bg"] forBarMetrics:UIBarMetricsDefault];
+ 
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -176,14 +185,14 @@
     //NSLog(@"%d__%@",indexPath.row,[self.AnnotationNote objectAtIndex:indexPath.row]);
 //    cell.textLabel.text=[self.AnnotationNote objectAtIndex:indexPath.row];
     Config *config=[self.AnnotationNote objectAtIndex:indexPath.row];
-    UILabel *la1=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, 260, 18)];
+    UILabel *la1=[[UILabel alloc]initWithFrame:CGRectMake(25, 0, 260, 18)];
     la1.text=config.Name;
-    la1.font=[UIFont fontWithName:nil size:12];
+    la1.font=[UIFont fontWithName:nil size:10];
     la1.textColor=[UIColor grayColor];
     [cell addSubview:la1];
-    UILabel *la2=[[UILabel alloc]initWithFrame:CGRectMake(15, 15, 260, 18)];
+    UILabel *la2=[[UILabel alloc]initWithFrame:CGRectMake(25, 15, 260, 18)];
     la2.text=config.Address;
-    la2.font=[UIFont fontWithName:nil size:12];
+    la2.font=[UIFont fontWithName:nil size:10];
     la2.textColor=[UIColor grayColor];
     [cell addSubview:la2];
     return cell;
@@ -198,7 +207,8 @@
     NSString *Time=[NSString stringWithFormat:@"%ld:%ld",(long)[comps hour],(long)[comps minute]];
     Config *config=[self.AnnotationNote objectAtIndex:indexPath.row];
     NSString *Note=[NSString stringWithFormat:@"%@ 在 %@",Time,config.Name];
-    [[GameUtils getCurrentUserInfo].CheckInPlace addObject:Note];
+    //[[GameUtils getCurrentUserInfo].CheckInPlace addObject:Note];
+    [self.delegate IsShowView:true Note:Note];
     [self retureAction];
 }
 
@@ -206,6 +216,7 @@
 {
     /* Add observer for showsUserLocation. */
     [self.mapView.userLocation addObserver:self forKeyPath:@"coordinate" options:NSKeyValueObservingOptionNew context:nil];
+//    [[GameUtils getCurrentUserInfo] addObserver:self forKeyPath:@"CheckInPlace" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 #pragma mark - NSKeyValueObservering
@@ -216,6 +227,11 @@
     {
        [self searchPoiByCenterCoordinate];
     }
+    
+//    if([keyPath isEqualToString:@"CheckInPlace"]){
+//        //改变
+//        
+//    }
 }
 
 
@@ -236,7 +252,8 @@
 }
 
 -(void)leftTapped:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate IsShowView:false Note:nil];
+    [self retureAction];
 }
 
 - (void)didReceiveMemoryWarning

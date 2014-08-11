@@ -10,7 +10,17 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchAPI.h>
 
-@interface MapViewPage : UIViewController<MAMapViewDelegate,AMapSearchDelegate>
+@protocol MapDelegate <NSObject>
+
+-(void)IsShowView:(BOOL)flag Note:(NSString *)note;
+
+@end
+
+@interface MapViewPage : UIViewController<MAMapViewDelegate,AMapSearchDelegate>{
+    
+}
+
+@property(nonatomic,assign) id<MapDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UITableView *Table;
 

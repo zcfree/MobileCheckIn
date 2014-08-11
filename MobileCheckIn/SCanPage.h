@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ZBarSDK.h"
-@interface SCanPage : UIViewController<ZBarReaderDelegate>
+@interface SCanPage : SubBasePage<ZBarReaderDelegate,ZBarReaderViewDelegate>{
+    
+}
 
-@property (weak, nonatomic) IBOutlet UINavigationBar *CustomNav;
-@property (weak, nonatomic) IBOutlet UINavigationItem *NavItem;
+@property (weak, nonatomic) IBOutlet UITextView *TextView;
+@property(nonatomic,strong)ZBarReaderView *readerView;
 @end

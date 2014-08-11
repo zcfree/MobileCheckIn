@@ -65,6 +65,8 @@
 		D697389B1953CAD30071847A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D697389A1953CAD30071847A /* CoreTelephony.framework */; };
 		D697389D1953CADE0071847A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D697389C1953CADE0071847A /* libz.dylib */; };
 		D697389F1953CAEE0071847A /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D697389E1953CAEE0071847A /* libstdc++.6.0.9.dylib */; };
+		D69FBC51198A981300836CA4 /* SubBasePage.m in Sources */ = {isa = PBXBuildFile; fileRef = D69FBC50198A981300836CA4 /* SubBasePage.m */; };
+		D6A342DA19863A5A0071EC7F /* UIPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A342D919863A5A0071EC7F /* UIPopoverView.m */; };
 		D6AC7930195516DF00952A0A /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6AC792F195516DF00952A0A /* AMapSearchKit.framework */; };
 		D6AC7932195516E600952A0A /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6AC7931195516E600952A0A /* MAMapKit.framework */; };
 		D6AC7936195517A500952A0A /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6AC7935195517A500952A0A /* AMap.bundle */; };
@@ -1872,6 +1874,7 @@
 		D6AC875F195540F500952A0A /* NSString+deviceString.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AC875E195540F500952A0A /* NSString+deviceString.m */; };
 		D6ADA7CE197FD9290086B5DB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6ADA7CD197FD9290086B5DB /* Settings.bundle */; };
 		D6B314E6198358EA00017BF0 /* BasePage.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B314E5198358EA00017BF0 /* BasePage.m */; };
+		D6CE40CD19928F2D00C996A2 /* UISubview.m in Sources */ = {isa = PBXBuildFile; fileRef = D6CE40CC19928F2D00C996A2 /* UISubview.m */; };
 		D6FD4B0919507D7100AE81E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FD4B0819507D7100AE81E5 /* Foundation.framework */; };
 		D6FD4B0B19507D7100AE81E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FD4B0A19507D7100AE81E5 /* CoreGraphics.framework */; };
 		D6FD4B0D19507D7100AE81E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6FD4B0C19507D7100AE81E5 /* UIKit.framework */; };
@@ -2021,6 +2024,10 @@
 		D697389A1953CAD30071847A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		D697389C1953CADE0071847A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D697389E1953CAEE0071847A /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		D69FBC4F198A981300836CA4 /* SubBasePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubBasePage.h; sourceTree = "<group>"; };
+		D69FBC50198A981300836CA4 /* SubBasePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubBasePage.m; sourceTree = "<group>"; };
+		D6A342D819863A5A0071EC7F /* UIPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPopoverView.h; sourceTree = "<group>"; };
+		D6A342D919863A5A0071EC7F /* UIPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPopoverView.m; sourceTree = "<group>"; };
 		D6AC792F195516DF00952A0A /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		D6AC7931195516E600952A0A /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		D6AC7935195517A500952A0A /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = MAMapKit.framework/Versions/2.2.1.1647/Resources/AMap.bundle; sourceTree = "<group>"; };
@@ -3832,6 +3839,8 @@
 		D6ADA7CD197FD9290086B5DB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D6B314E4198358EA00017BF0 /* BasePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePage.h; sourceTree = "<group>"; };
 		D6B314E5198358EA00017BF0 /* BasePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePage.m; sourceTree = "<group>"; };
+		D6CE40CB19928F2D00C996A2 /* UISubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISubview.h; sourceTree = "<group>"; };
+		D6CE40CC19928F2D00C996A2 /* UISubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISubview.m; sourceTree = "<group>"; };
 		D6FD4B0519507D7100AE81E5 /* MobileCheckIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileCheckIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6FD4B0819507D7100AE81E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D6FD4B0A19507D7100AE81E5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -3942,6 +3951,8 @@
 				D66AA4CC1951819E000A07C7 /* CheckInPage.h */,
 				D66AA4CD1951819E000A07C7 /* CheckInPage.m */,
 				D66AA4CE1951819E000A07C7 /* CheckInPage.xib */,
+				D6CE40CB19928F2D00C996A2 /* UISubview.h */,
+				D6CE40CC19928F2D00C996A2 /* UISubview.m */,
 				D66AA4D41951E939000A07C7 /* TableViewCell.h */,
 				D66AA4D51951E939000A07C7 /* TableViewCell.m */,
 				D66AA4D61951E939000A07C7 /* TableViewCell.xib */,
@@ -3951,6 +3962,8 @@
 				D69738931953C2CE0071847A /* MapViewPage.h */,
 				D69738941953C2CE0071847A /* MapViewPage.m */,
 				D69738951953C2CE0071847A /* MapViewPage.xib */,
+				D6A342D819863A5A0071EC7F /* UIPopoverView.h */,
+				D6A342D919863A5A0071EC7F /* UIPopoverView.m */,
 			);
 			name = CheckInPart;
 			sourceTree = "<group>";
@@ -4037,6 +4050,8 @@
 			children = (
 				D6B314E4198358EA00017BF0 /* BasePage.h */,
 				D6B314E5198358EA00017BF0 /* BasePage.m */,
+				D69FBC4F198A981300836CA4 /* SubBasePage.h */,
+				D69FBC50198A981300836CA4 /* SubBasePage.m */,
 			);
 			name = "BasicVC(基类)";
 			sourceTree = "<group>";
@@ -8036,6 +8051,7 @@
 			files = (
 				D66AA4E11951F83A000A07C7 /* MJRefreshFooterView.m in Sources */,
 				D65018021956C53700CC457E /* BusStopAnnotation.m in Sources */,
+				D6CE40CD19928F2D00C996A2 /* UISubview.m in Sources */,
 				D6B314E6198358EA00017BF0 /* BasePage.m in Sources */,
 				D650180F1956D43800CC457E /* UserUtils.m in Sources */,
 				D65018061956C53700CC457E /* CustomOverlayRenderer.m in Sources */,
@@ -8052,6 +8068,7 @@
 				D65018041956C53700CC457E /* CustomCalloutView.m in Sources */,
 				D66821CA19605A4B00F2BF4F /* SubViewPage.m in Sources */,
 				D6FD597D1950993D00AE81E5 /* NotePage.m in Sources */,
+				D6A342DA19863A5A0071EC7F /* UIPopoverView.m in Sources */,
 				D6FD598519509DFC00AE81E5 /* IIWrapController.m in Sources */,
 				D65018011956C53700CC457E /* AnimatedAnnotationView.m in Sources */,
 				D66821C61960595800F2BF4F /* UIView+screenshot.m in Sources */,
@@ -8075,6 +8092,7 @@
 				D6FD4B1919507D7100AE81E5 /* AppDelegate.m in Sources */,
 				D66AA4CF1951819E000A07C7 /* CheckInPage.m in Sources */,
 				D6FD4B1519507D7100AE81E5 /* main.m in Sources */,
+				D69FBC51198A981300836CA4 /* SubBasePage.m in Sources */,
 				D66821D1196073BE00F2BF4F /* SCanPage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

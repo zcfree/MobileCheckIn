@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "UIFolderTableView.h"
+#import "MapViewPage.h"
 
-@interface CheckInPage : UIViewController<UITableViewDataSource,UITableViewDelegate,UIFolderTableViewDelegate>{
+@interface CheckInPage : SubBasePage<UITableViewDataSource,UITableViewDelegate,UIFolderTableViewDelegate,MapDelegate>{
 
 }
 
@@ -20,8 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIFolderTableView *CheckInView;
 @property(assign)NSUInteger CurrentIndex;
 @property(nonatomic,strong)NSMutableArray *Data;
-@property (weak, nonatomic) IBOutlet UINavigationBar *CustomNav;
-@property (weak, nonatomic) IBOutlet UINavigationItem *NavItem;
-
-
+@property(assign)BOOL IsShow;
+@property(assign)NSString *note;
 @end

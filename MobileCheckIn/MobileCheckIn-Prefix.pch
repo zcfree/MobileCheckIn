@@ -16,4 +16,5 @@
     #import "NSString+deviceString.h"
     #import "Defines.h"
     #import "BasePage.h"
+    #import "SubBasePage.h"
 #endif
