@@ -13,7 +13,7 @@
 #import "ILBarButtonItem.h"
 #import "NSString+deviceString.h"
 #import "MapViewPage.h"
-#import "GameUtils.h"
+#import "YKContext.h"
 #import "SubViewPage.h"
 #import "UISubview.h"
 @interface CheckInPage ()<MJRefreshBaseViewDelegate>{
@@ -42,10 +42,10 @@
         UISubview *Subview=[[UISubview alloc]initWithFrame:CGRectMake(10, 100, 200, 200)];
         [Subview setTitle:@"Select..."];
         [Subview show];
-        [[GameUtils getCurrentUserInfo].CheckInPlace addObject:self.note];
+        [[YKContext Instance].CheckInPlace addObject:self.note];
     }
     
-    self.Data=[GameUtils getCurrentUserInfo].CheckInPlace;
+    self.Data=[YKContext Instance].CheckInPlace;
     [self.CheckInView reloadData];
     
 }

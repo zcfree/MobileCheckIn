@@ -9,7 +9,7 @@
 #import "MapViewPage.h"
 #import "POIAnnotation.h"
 #import "CommonUtility.h"
-#import "GameUtils.h"
+#import "YKContext.h"
 #import "ILBarButtonItem.h"
 #import "MoLabel.h"
 @interface MapViewPage ()
